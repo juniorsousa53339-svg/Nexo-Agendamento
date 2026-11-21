@@ -1,0 +1,298 @@
+:root {
+    --nexo-ink: #1d2925;
+    --nexo-ink-soft: #52615b;
+    --nexo-deep: #23483e;
+    --nexo-deep-dark: #17352f;
+    --nexo-sage: #a9c2b6;
+    --nexo-sage-light: #e6efe9;
+    --nexo-paper: #f7f9f6;
+    --nexo-white: #ffffff;
+    --nexo-line: #d9e3dd;
+    --nexo-brass: #a9804f;
+    --nexo-danger: #9a4d4d;
+    --nexo-radius: 18px;
+    --nexo-shadow: 0 18px 45px rgba(29, 41, 37, .08);
+}
+
+.dark {
+    --nexo-ink: #f0f4f1;
+    --nexo-ink-soft: #9aa8a1;
+    --nexo-deep: #2fa18b;
+    --nexo-deep-dark: #195c4f;
+    --nexo-sage: #2a3d35;
+    --nexo-sage-light: #12201b;
+    --nexo-paper: #090d0b;
+    --nexo-white: #111a16;
+    --nexo-line: #20332b;
+    --nexo-brass: #c99c64;
+    --nexo-danger: #e06c6c;
+    --nexo-shadow: 0 18px 45px rgba(0, 0, 0, .45);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--nexo-paper);
+    color: var(--nexo-ink);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .3s ease, color .3s ease;
+}
+body::selection { background: var(--nexo-sage); color: var(--nexo-ink); }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid rgba(169, 128, 79, .7); outline-offset: 3px; }
+
+.nexo-shell { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+.nexo-header {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--nexo-paper);
+    border-bottom: 1px solid var(--nexo-line);
+    backdrop-filter: blur(14px);
+    transition: background-color .3s ease, border-color .3s ease;
+}
+.nexo-header-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nexo-brand { display: inline-flex; align-items: center; gap: 12px; }
+.nexo-mark { position: relative; width: 35px; height: 35px; display: grid; place-items: center; color: var(--nexo-deep); }
+.nexo-mark::before, .nexo-mark::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 3px; background: var(--nexo-deep); border-radius: 4px; }
+.nexo-mark::before { height: 30px; }
+.nexo-mark::after { height: 4px; width: 25px; background: var(--nexo-sage); box-shadow: 0 -8px 0 var(--nexo-sage), 0 8px 0 var(--nexo-sage); }
+.nexo-brand-name { font-family: 'Newsreader', Georgia, serif; font-size: 1.6rem; line-height: 1; letter-spacing: -.03em; color: var(--nexo-ink); }
+.nexo-brand-sub { display: block; margin-top: 4px; color: var(--nexo-ink-soft); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; }
+.nexo-nav { display: flex; align-items: center; gap: 26px; color: var(--nexo-ink-soft); font-size: .82rem; }
+.nexo-nav a { transition: color .2s ease; }
+.nexo-nav a:hover { color: var(--nexo-deep); }
+.nexo-header-actions { display: flex; align-items: center; gap: 12px; }
+.nexo-admin-link { color: var(--nexo-ink-soft); font-size: .76rem; }
+.nexo-admin-link:hover { color: var(--nexo-deep); }
+
+.nexo-theme-toggle {
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--nexo-line);
+    background: var(--nexo-white); color: var(--nexo-ink); display: grid; place-items: center; cursor: pointer;
+    transition: transform .2s ease, border-color .2s ease;
+}
+.nexo-theme-toggle:hover { transform: scale(1.05); border-color: var(--nexo-deep); }
+
+.nexo-button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 21px; border: 1px solid transparent; border-radius: 999px; font-size: .8rem; font-weight: 700; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+.nexo-button:hover { transform: translateY(-1px); }
+.nexo-button-primary { color: #ffffff; background: var(--nexo-deep); }
+.nexo-button-primary:hover { opacity: .9; }
+.nexo-button-ghost { color: var(--nexo-deep); border-color: var(--nexo-line); background: transparent; }
+.nexo-button-ghost:hover { border-color: var(--nexo-deep); background: var(--nexo-white); }
+
+.nexo-hero { position: relative; overflow: hidden; padding: 104px 0 112px; background: var(--nexo-paper); }
+.nexo-hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr); gap: 90px; align-items: center; }
+.nexo-eyebrow { display: flex; align-items: center; gap: 10px; color: var(--nexo-brass); font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.nexo-eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+.nexo-hero h1 { max-width: 650px; margin: 22px 0 22px; font-family: 'Newsreader', Georgia, serif; font-size: clamp(3.2rem, 6.2vw, 5.4rem); font-weight: 400; letter-spacing: -.055em; line-height: .98; color: var(--nexo-ink); }
+.nexo-hero h1 em { color: var(--nexo-deep); font-style: normal; }
+.nexo-lead { max-width: 540px; margin: 0; color: var(--nexo-ink-soft); font-size: 1.05rem; }
+.nexo-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.nexo-hero-note { display: flex; align-items: center; gap: 10px; margin-top: 24px; color: var(--nexo-ink-soft); font-size: .75rem; }
+.nexo-hero-note strong { color: var(--nexo-ink); }
+.nexo-note-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--nexo-brass); }
+.nexo-hero-portrait { position: relative; min-height: 510px; }
+.nexo-portrait-frame { position: absolute; inset: 0 24px 0 34px; overflow: hidden; background: var(--nexo-sage-light); border-radius: 190px 190px 24px 24px; border: 1px solid var(--nexo-line); }
+.nexo-portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: saturate(.78) contrast(1.02); }
+.nexo-portrait-label { position: absolute; z-index: 2; bottom: 28px; left: 4px; display: flex; align-items: center; gap: 14px; padding: 14px 18px; color: var(--nexo-white); background: var(--nexo-deep); border-radius: 12px; box-shadow: var(--nexo-shadow); }
+.nexo-online-avatar { position: relative; width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 2px solid var(--nexo-sage); }
+.nexo-online-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.nexo-online-dot { position: absolute; bottom: 2px; right: 2px; width: 10px; height: 10px; background: #22c55e; border: 2px solid var(--nexo-deep); border-radius: 50%; animation: pulseOnline 2s infinite; }
+@keyframes pulseOnline { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+.nexo-portrait-label strong { display: block; font-family: 'Newsreader', Georgia, serif; font-size: 1.25rem; font-weight: 400; line-height: 1; }
+.nexo-portrait-label span { display: block; margin-top: 3px; color: var(--nexo-sage); font-size: .68rem; }
+.nexo-spine-line { position: absolute; z-index: 3; top: 44px; right: 0; width: 44px; height: 285px; border-right: 1px solid var(--nexo-brass); opacity: .75; }
+.nexo-spine-line::after { content: 'N'; position: absolute; right: -7px; bottom: -25px; color: var(--nexo-brass); font-family: 'Newsreader', Georgia, serif; font-size: .85rem; }
+
+.nexo-section { padding: 112px 0; border-top: 1px solid var(--nexo-line); }
+.nexo-section-tint { background: var(--nexo-sage-light); }
+.nexo-section-heading { display: grid; grid-template-columns: minmax(220px, .65fr) minmax(0, 1fr); gap: 70px; align-items: start; margin-bottom: 58px; }
+.nexo-section-heading h2 { max-width: 650px; margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: clamp(2.35rem, 4.3vw, 4rem); font-weight: 400; letter-spacing: -.045em; line-height: 1; color: var(--nexo-ink); }
+.nexo-section-heading p { max-width: 500px; margin: 8px 0 0; color: var(--nexo-ink-soft); font-size: .94rem; }
+.nexo-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .72fr); gap: 90px; align-items: start; }
+.nexo-intro-copy { max-width: 650px; color: var(--nexo-ink-soft); font-size: 1.05rem; }
+.nexo-intro-copy p { margin: 0 0 20px; }
+.nexo-pullquote { padding: 28px 0 28px 28px; border-left: 2px solid var(--nexo-brass); color: var(--nexo-deep); font-family: 'Newsreader', Georgia, serif; font-size: 1.8rem; line-height: 1.08; }
+.nexo-pullquote small { display: block; margin-top: 18px; color: var(--nexo-ink-soft); font-family: 'Manrope', sans-serif; font-size: .68rem; line-height: 1.5; }
+
+.nexo-process { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--nexo-line); }
+.nexo-process-step { padding: 28px 34px 0 0; border-right: 1px solid var(--nexo-line); }
+.nexo-process-step + .nexo-process-step { padding-left: 34px; }
+.nexo-process-step:last-child { border-right: 0; }
+.nexo-process-step .step-number { color: var(--nexo-brass); font-family: 'Newsreader', Georgia, serif; font-size: 1.8rem; }
+.nexo-process-step h3 { margin: 16px 0 8px; font-family: 'Newsreader', Georgia, serif; font-size: 1.65rem; font-weight: 400; line-height: 1.05; color: var(--nexo-ink); }
+.nexo-process-step p { margin: 0; color: var(--nexo-ink-soft); font-size: .82rem; }
+
+.nexo-professional { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.2fr); gap: 96px; align-items: center; }
+.nexo-professional-image { height: 520px; overflow: hidden; background: var(--nexo-sage-light); border-radius: 12px 150px 12px 12px; border: 1px solid var(--nexo-line); }
+.nexo-professional-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: saturate(.72); }
+.nexo-professional-copy h2 { max-width: 650px; margin: 18px 0 22px; font-family: 'Newsreader', Georgia, serif; font-size: clamp(2.4rem, 4vw, 4rem); font-weight: 400; letter-spacing: -.045em; line-height: 1; color: var(--nexo-ink); }
+.nexo-professional-copy > p { max-width: 620px; color: var(--nexo-ink-soft); }
+.nexo-credentials { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; max-width: 620px; margin-top: 30px; border-top: 1px solid var(--nexo-line); }
+.nexo-credential { padding: 16px 0; border-bottom: 1px solid var(--nexo-line); color: var(--nexo-deep); font-size: .8rem; font-weight: 700; }
+.nexo-credential::before { content: '＋'; margin-right: 8px; color: var(--nexo-brass); }
+
+/* Cartões de Serviços Padronizados e Elegantes */
+.nexo-services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.nexo-service-card { background: var(--nexo-white); border: 1px solid var(--nexo-line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .3s cubic-bezier(0.16, 1, 0.3, 1); }
+.nexo-service-card:hover { transform: translateY(-5px); box-shadow: var(--nexo-shadow); }
+.nexo-service-img-wrap { position: relative; height: 210px; overflow: hidden; background: var(--nexo-sage-light); }
+.nexo-service-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.78) contrast(.98); transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1); }
+.nexo-service-card:hover .nexo-service-img-wrap img { transform: scale(1.04); }
+.nexo-service-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(23, 53, 47, .2)); }
+.nexo-service-body { padding: 26px; display: flex; flex-direction: column; justify-content: space-between; flex: 1; }
+.nexo-service-meta-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; font-size: .75rem; color: var(--nexo-ink-soft); }
+.nexo-service-duration { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: var(--nexo-sage-light); border-radius: 999px; font-weight: 600; color: var(--nexo-deep); }
+.nexo-service-price { font-family: 'Newsreader', Georgia, serif; font-size: 1.3rem; color: var(--nexo-deep); font-weight: 500; }
+.nexo-service-body h3 { margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-size: 1.55rem; font-weight: 400; letter-spacing: -.02em; line-height: 1.1; color: var(--nexo-ink); }
+.nexo-service-body p { margin: 0 0 20px; color: var(--nexo-ink-soft); font-size: .82rem; }
+.nexo-service-action { display: inline-flex; align-items: center; gap: 8px; color: var(--nexo-deep); font-weight: 800; font-size: .76rem; transition: color .2s ease; }
+.nexo-service-action:hover { color: var(--nexo-brass); }
+
+/* Animações e Reveal On Scroll */
+@keyframes nexoFadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.nexo-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+}
+.nexo-reveal.nexo-visible {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.nexo-booking-layout { display: grid; grid-template-columns: .65fr 1.35fr; gap: 78px; align-items: start; }
+.nexo-booking-intro h2 { margin: 18px 0; font-family: 'Newsreader', Georgia, serif; font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 400; letter-spacing: -.045em; line-height: 1; color: var(--nexo-ink); }
+.nexo-booking-intro p { color: var(--nexo-ink-soft); font-size: .88rem; }
+.nexo-booking-details { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--nexo-line); color: var(--nexo-ink-soft); font-size: .75rem; }
+.nexo-booking-details strong { display: block; margin-bottom: 4px; color: var(--nexo-ink); }
+.nexo-form { padding: 34px; background: var(--nexo-white); border: 1px solid var(--nexo-line); border-radius: 14px; box-shadow: var(--nexo-shadow); }
+.nexo-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 21px; }
+.nexo-field { margin-bottom: 21px; }
+.nexo-field label { display: block; margin-bottom: 7px; color: var(--nexo-ink); font-size: .72rem; font-weight: 800; }
+.nexo-field input, .nexo-field select, .nexo-field textarea { width: 100%; padding: 12px 13px; color: var(--nexo-ink); background: var(--nexo-paper); border: 1px solid var(--nexo-line); border-radius: 8px; font-size: .78rem; transition: border-color .2s ease, box-shadow .2s ease; }
+.nexo-field input::placeholder, .nexo-field textarea::placeholder { color: #8a9891; }
+.nexo-field input:focus, .nexo-field select:focus, .nexo-field textarea:focus { border-color: var(--nexo-deep); outline: 0; box-shadow: 0 0 0 3px rgba(35, 72, 62, .1); }
+.nexo-field textarea { min-height: 100px; resize: vertical; }
+.nexo-error { display: block; margin-top: 5px; color: var(--nexo-danger); font-size: .68rem; }
+.nexo-checks { display: flex; flex-wrap: wrap; gap: 18px; padding: 16px 0 22px; border-top: 1px solid var(--nexo-line); }
+.nexo-check { display: flex; align-items: center; gap: 8px; color: var(--nexo-ink-soft); font-size: .76rem; cursor: pointer; }
+.nexo-check input { accent-color: var(--nexo-deep); }
+.nexo-form .nexo-button { width: 100%; }
+.nexo-alert { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 22px; padding: 13px 15px; border-radius: 8px; font-size: .77rem; }
+.nexo-alert-success { color: var(--nexo-deep); background: var(--nexo-sage-light); border: 1px solid #bdd5c8; }
+.nexo-alert-error { color: var(--nexo-danger); background: #f8eaea; border: 1px solid #ebcaca; }
+
+.nexo-location { display: grid; grid-template-columns: .8fr 1.2fr; gap: 78px; align-items: center; }
+.nexo-location h2 { margin: 18px 0; font-family: 'Newsreader', Georgia, serif; font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 400; letter-spacing: -.045em; line-height: 1; color: var(--nexo-ink); }
+.nexo-location p { color: var(--nexo-ink-soft); font-size: .88rem; }
+.nexo-contact-list { margin-top: 28px; border-top: 1px solid var(--nexo-line); }
+.nexo-contact { padding: 14px 0; border-bottom: 1px solid var(--nexo-line); font-size: .77rem; }
+.nexo-contact strong { display: block; color: var(--nexo-ink); }
+.nexo-contact span { color: var(--nexo-ink-soft); }
+.nexo-map { min-height: 380px; overflow: hidden; border-radius: 12px; border: 1px solid var(--nexo-line); filter: saturate(.65); }
+.nexo-map iframe { width: 100%; min-height: 380px; border: 0; }
+
+.nexo-footer { padding: 40px 0; border-top: 1px solid var(--nexo-line); color: var(--nexo-ink-soft); font-size: .72rem; }
+.nexo-footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.nexo-footer .nexo-brand-name { color: var(--nexo-ink); font-size: 1.2rem; }
+.nexo-footer a { color: var(--nexo-deep); font-weight: 700; }
+
+/* Admin */
+.nexo-admin-body { background: #eef3ef; }
+.nexo-admin-header { background: var(--nexo-deep-dark); border-bottom: 0; color: var(--nexo-white); }
+.nexo-admin-header .nexo-brand-name, .nexo-admin-header .nexo-brand-sub { color: var(--nexo-white); }
+.nexo-admin-header .nexo-brand-sub { color: var(--nexo-sage); }
+.nexo-admin-header .nexo-mark::before { background: var(--nexo-white); }
+.nexo-admin-header .nexo-mark::after { background: var(--nexo-sage); box-shadow: 0 -8px 0 var(--nexo-sage), 0 8px 0 var(--nexo-sage); }
+.nexo-admin-header .nexo-button-ghost { color: var(--nexo-white); border-color: rgba(255,255,255,.25); }
+.nexo-admin-header .nexo-button-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.5); }
+.nexo-admin-main { padding: 55px 0 80px; }
+.nexo-admin-top { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 38px; }
+.nexo-admin-top h1 { margin: 12px 0 8px; font-family: 'Newsreader', Georgia, serif; font-size: clamp(2.4rem, 4vw, 3.7rem); font-weight: 400; letter-spacing: -.045em; line-height: 1; }
+.nexo-admin-top p { margin: 0; color: var(--nexo-ink-soft); font-size: .8rem; }
+.nexo-admin-date { display: flex; gap: 9px; align-items: center; }
+.nexo-admin-date input, .nexo-admin-date button { min-height: 42px; padding: 0 13px; border: 1px solid var(--nexo-line); border-radius: 8px; font-size: .75rem; }
+.nexo-admin-date input { color: var(--nexo-ink); background: var(--nexo-white); }
+.nexo-admin-date button { color: var(--nexo-white); background: var(--nexo-deep); font-weight: 800; cursor: pointer; }
+.nexo-kpis { display: grid; grid-template-columns: repeat(4, 1fr); margin-bottom: 45px; border-top: 1px solid var(--nexo-line); border-bottom: 1px solid var(--nexo-line); }
+.nexo-kpi { padding: 24px 22px 24px 0; }
+.nexo-kpi + .nexo-kpi { padding-left: 22px; border-left: 1px solid var(--nexo-line); }
+.nexo-kpi-label { color: var(--nexo-ink-soft); font-size: .67rem; font-weight: 800; }
+.nexo-kpi-value { display: block; margin-top: 7px; color: var(--nexo-deep); font-family: 'Newsreader', Georgia, serif; font-size: 2.8rem; line-height: 1; }
+.nexo-kpi-note { display: block; margin-top: 7px; color: var(--nexo-brass); font-size: .68rem; }
+.nexo-admin-panel { margin-bottom: 38px; padding: 28px; background: var(--nexo-white); border: 1px solid var(--nexo-line); border-radius: 12px; box-shadow: 0 8px 25px rgba(29, 41, 37, .04); }
+.nexo-admin-panel-heading { display: flex; align-items: start; justify-content: space-between; gap: 18px; margin-bottom: 23px; }
+.nexo-admin-panel h2 { margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: 2rem; font-weight: 400; line-height: 1; }
+.nexo-admin-panel-heading p { margin: 6px 0 0; color: var(--nexo-ink-soft); font-size: .72rem; }
+.nexo-table-wrap { overflow-x: auto; }
+.nexo-table { width: 100%; border-collapse: collapse; font-size: .76rem; }
+.nexo-table th { padding: 12px 12px 12px 0; color: var(--nexo-ink-soft); border-bottom: 1px solid var(--nexo-line); font-size: .64rem; font-weight: 800; text-align: left; }
+.nexo-table td { padding: 15px 12px 15px 0; border-bottom: 1px solid #e8eeea; vertical-align: middle; }
+.nexo-table tr:last-child td { border-bottom: 0; }
+.nexo-table tr:hover td { background: #fbfcfb; }
+.nexo-muted { color: var(--nexo-ink-soft); }
+.nexo-status { display: inline-block; padding: 5px 9px; border-radius: 999px; color: var(--nexo-deep); background: var(--nexo-sage-light); font-size: .65rem; font-weight: 800; white-space: nowrap; }
+.nexo-status-cancelado { color: var(--nexo-danger); background: #f8eaea; }
+.nexo-status-concluido { color: #4e7048; background: #e8f1e5; }
+.nexo-status-agendado { color: #866531; background: #f6efdf; }
+.nexo-inline-form { display: inline-flex; align-items: center; gap: 7px; }
+.nexo-inline-form select, .nexo-inline-form button { padding: 8px 9px; border: 1px solid var(--nexo-line); border-radius: 6px; font-size: .68rem; }
+.nexo-inline-form select { color: var(--nexo-ink); background: var(--nexo-paper); }
+.nexo-inline-form button { color: var(--nexo-white); background: var(--nexo-deep); font-weight: 800; cursor: pointer; }
+.nexo-service-admin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.nexo-service-admin { padding: 18px; border: 1px solid var(--nexo-line); border-radius: 9px; background: var(--nexo-paper); }
+.nexo-service-admin label { display: block; margin: 12px 0 5px; color: var(--nexo-ink-soft); font-size: .63rem; font-weight: 800; }
+.nexo-service-admin input, .nexo-service-admin textarea { width: 100%; padding: 9px; color: var(--nexo-ink); background: var(--nexo-white); border: 1px solid var(--nexo-line); border-radius: 6px; font-size: .72rem; }
+.nexo-service-admin textarea { resize: vertical; }
+.nexo-service-admin-actions { display: flex; gap: 8px; margin-top: 15px; padding-top: 13px; border-top: 1px solid var(--nexo-line); }
+.nexo-small-button { padding: 8px 11px; border: 0; border-radius: 6px; color: var(--nexo-white); background: var(--nexo-deep); font-size: .67rem; font-weight: 800; cursor: pointer; }
+.nexo-small-button-danger { color: var(--nexo-danger); background: #f8eaea; }
+.nexo-modal { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(23, 53, 47, .72); }
+.nexo-modal.hidden { display: none; }
+.nexo-modal-content { width: min(510px, 100%); max-height: 90vh; overflow-y: auto; padding: 30px; background: var(--nexo-white); border-radius: 12px; }
+.nexo-modal-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.nexo-modal-heading h3 { margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: 2rem; font-weight: 400; }
+.nexo-modal-close { border: 0; color: var(--nexo-ink-soft); background: none; font-size: 1.6rem; cursor: pointer; }
+
+@media (max-width: 900px) {
+    .nexo-nav { display: none; }
+    .nexo-hero-grid, .nexo-intro, .nexo-professional, .nexo-booking-layout, .nexo-location { grid-template-columns: 1fr; gap: 45px; }
+    .nexo-hero { padding: 75px 0 80px; }
+    .nexo-hero-portrait { min-height: 430px; max-width: 510px; }
+    .nexo-section { padding: 78px 0; }
+    .nexo-section-heading { grid-template-columns: 1fr; gap: 18px; margin-bottom: 38px; }
+    .nexo-process { grid-template-columns: 1fr; }
+    .nexo-process-step, .nexo-process-step + .nexo-process-step { padding: 24px 0; border-right: 0; border-bottom: 1px solid var(--nexo-line); }
+    .nexo-process-step:last-child { border-bottom: 0; }
+    .nexo-professional-image { max-width: 520px; height: 430px; }
+    .nexo-services-grid { grid-template-columns: repeat(2, 1fr); }
+    .nexo-service-admin-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+    .nexo-shell { width: min(100% - 32px, 1180px); }
+    .nexo-header-inner { min-height: 68px; }
+    .nexo-brand-sub, .nexo-admin-link { display: none; }
+    .nexo-header-actions .nexo-button { min-height: 40px; padding: 0 14px; font-size: .7rem; }
+    .nexo-hero h1 { font-size: 3.15rem; }
+    .nexo-hero-portrait { min-height: 380px; }
+    .nexo-portrait-frame { inset: 0 10px 0 18px; }
+    .nexo-portrait-label { left: 0; bottom: 18px; }
+    .nexo-form-grid, .nexo-credentials, .nexo-kpis { grid-template-columns: 1fr; }
+    .nexo-form { padding: 22px 18px; }
+    .nexo-services-grid { grid-template-columns: 1fr; }
+    .nexo-footer-inner, .nexo-admin-top { align-items: flex-start; flex-direction: column; }
+    .nexo-admin-date { width: 100%; }
+    .nexo-admin-date input { flex: 1; }
+    .nexo-admin-panel { padding: 20px 16px; }
+    .nexo-service-admin-grid { grid-template-columns: 1fr; }
+    .nexo-table { min-width: 760px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

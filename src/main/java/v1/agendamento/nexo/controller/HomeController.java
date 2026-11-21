@@ -8,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import v1.agendamento.nexo.dto.AppointmentFormDTO;
 import v1.agendamento.nexo.service.AppointmentService;
 import v1.agendamento.nexo.service.ClinicServiceService;
@@ -33,23 +32,25 @@ public class HomeController {
     public String createAppointment(
             @Valid @ModelAttribute("appointmentForm") AppointmentFormDTO appointmentForm,
             BindingResult bindingResult,
-            RedirectAttributes redirectAttributes) {
+            Model model) {
 
         if (bindingResult.hasErrors()) {
-            String errorMsg = bindingResult.getAllErrors().get(0).getDefaultMessage();
-            redirectAttributes.addFlashAttribute("errorMessage", errorMsg);
-            redirectAttributes.addFlashAttribute("appointmentForm", appointmentForm);
-            return "redirect:/#agendar";
+            model.addAttribute("services", clinicServiceService.findAllServices());
+            return "home";
         }
 
         try {
-            appointmentService.createAppointment(appointmentForm);
-            redirectAttributes.addFlashAttribute("successMessage", "Consulta agendada com sucesso! Entraremos em contato via WhatsApp para confirmação.");
+            v1.agendamento.nexo.model.Appointment appointment = appointmentService.createAppointment(appointmentForm);
+            model.addAttribute("successMessage", "Consulta agendada com sucesso! Entraremos em contato via WhatsApp para confirmação.");
+            model.addAttribute("scheduledAppointment", appointment);
+            model.addAttribute("appointmentForm", new AppointmentFormDTO());
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
-            redirectAttributes.addFlashAttribute("appointmentForm", appointmentForm);
+            model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("services", clinicServiceService.findAllServices());
+            return "home";
         }
 
-        return "redirect:/#agendar";
+        model.addAttribute("services", clinicServiceService.findAllServices());
+        return "home";
     }
 }
