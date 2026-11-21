@@ -2,12 +2,14 @@
 FROM eclipse-temurin:17-jdk-jammy AS build
 WORKDIR /app
 
+# Instala o Maven diretamente no container para evitar problemas com o wrapper
+RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
+
 # Copia todos os arquivos do projeto para o container
 COPY . .
 
-# Garante permissão de execução no mvnw e compila o projeto
-RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests
+# Compila o projeto diretamente com o maven instalado (mvn)
+RUN mvn clean package -DskipTests
 
 # Estágio de Execução
 FROM eclipse-temurin:17-jre-jammy
