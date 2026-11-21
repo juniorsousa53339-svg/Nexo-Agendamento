@@ -2,29 +2,22 @@
 FROM eclipse-temurin:17-jdk-jammy AS build
 WORKDIR /app
 
-# Copia os arquivos de configuração do Maven e o wrapper
-COPY .mvn/ .mvn/
-COPY mvnw pom.xml ./
+# Copia todos os arquivos do projeto para o container
+COPY . .
 
-# Dá permissão de execução ao mvnw e baixa as dependências (cache de build)
+# Garante permissão de execução no mvnw e compila o projeto
 RUN chmod +x mvnw
-RUN ./mvnw dependency:go-offline
-
-# Copia o código fonte
-COPY src/ src/
-
-# Empacota a aplicação sem rodar os testes
-RUN ./mvnw package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
 # Estágio de Execução
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
-# Copia o jar gerado do estágio anterior
+# Copia o jar gerado no estágio anterior
 COPY --from=build /app/target/*.jar app.jar
 
-# Porta padrão do Spring Boot
+# Porta padrão exposta pelo Spring Boot
 EXPOSE 8080
 
-# Comando para iniciar a aplicação
+# Comando para rodar a aplicação
 ENTRYPOINT ["java", "-jar", "app.jar"]
