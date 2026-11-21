@@ -32,12 +32,12 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if (clinicServiceRepository.count() == 0) {
             // 1. Cadastrar Serviços
-            ClinicService s1 = new ClinicService(null, "Avaliação Inicial", "Avaliação postural, anamnese completa e testes ortopédicos para identificação de desalinhamentos.", 60, new BigDecimal("150.00"));
-            ClinicService s2 = new ClinicService(null, "Consulta de Quiropraxia", "Ajuste articular e técnicas de manipulação para alívio de dores na coluna e extremidades.", 60, new BigDecimal("200.00"));
-            ClinicService s3 = new ClinicService(null, "Alívio de Dores Agudas", "Atendimento focado em analgesia imediata e liberação miofascial para crises agudas.", 60, new BigDecimal("220.00"));
-            ClinicService s4 = new ClinicService(null, "Avaliação de Mobilidade", "Análise biomecânica detalhada de amplitude de movimento e padrões de movimento.", 60, new BigDecimal("180.00"));
-            ClinicService s5 = new ClinicService(null, "Sessão de Acompanhamento", "Reavaliação periódica e manutenção preventiva do alinhamento corporal.", 60, new BigDecimal("160.00"));
-            ClinicService s6 = new ClinicService(null, "Orientação Postural", "Educação ergonômica para o trabalho e cinesioterapia preventiva.", 60, new BigDecimal("140.00"));
+            ClinicService s1 = new ClinicService(null, "Avaliação Inicial", "Avaliação postural, anamnese completa e testes ortopédicos para identificação de desalinhamentos.", 60, new BigDecimal("150.00"), "https://images.pexels.com/photos/5793654/pexels-photo-5793654.jpeg");
+            ClinicService s2 = new ClinicService(null, "Consulta de Quiropraxia", "Ajuste articular e técnicas de manipulação para alívio de dores na coluna e extremidades.", 60, new BigDecimal("200.00"), "https://images.pexels.com/photos/5793949/pexels-photo-5793949.jpeg");
+            ClinicService s3 = new ClinicService(null, "Alívio de Dores Agudas", "Atendimento focado em analgesia imediata e liberação miofascial para crises agudas.", 60, new BigDecimal("220.00"), "https://images.pexels.com/photos/5793794/pexels-photo-5793794.jpeg");
+            ClinicService s4 = new ClinicService(null, "Avaliação de Mobilidade", "Análise biomecânica detalhada de amplitude de movimento e padrões de movimento.", 60, new BigDecimal("180.00"), "https://images.pexels.com/photos/5793895/pexels-photo-5793895.jpeg");
+            ClinicService s5 = new ClinicService(null, "Sessão de Acompanhamento", "Reavaliação periódica e manutenção preventiva do alinhamento corporal.", 60, new BigDecimal("160.00"), "https://images.pexels.com/photos/5793683/pexels-photo-5793683.jpeg");
+            ClinicService s6 = new ClinicService(null, "Orientação Postural", "Educação ergonômica para o trabalho e cinesioterapia preventiva.", 60, new BigDecimal("140.00"), "https://images.pexels.com/photos/5793654/pexels-photo-5793654.jpeg");
 
             clinicServiceRepository.save(s1);
             clinicServiceRepository.save(s2);

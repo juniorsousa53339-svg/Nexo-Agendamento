@@ -10,7 +10,7 @@ O desenvolvimento do projeto **NEXO** será dividido em etapas sequenciais e con
 ### Fase 1: Arquitetura e Documentação (Fase Atual)
 * [x] Análise da estrutura do projeto e dependências (Java 17, Spring Boot).
 * [x] Criação dos arquivos de contexto centrais (`PROJECT_CONTEXT.md`, `ARCHITECTURE.md`, `BUSINESS_RULES.md`, `UI_UX_GUIDELINES.md`, `AI_AGENTS.md`, `IMPLEMENTATION_PLAN.md`, `DATABASE_DESIGN.md`).
-* [ ] Revisão dos documentos pelo usuário (Brian Sousa / Professor orientador).
+* [ ] Revisão dos documentos pelo usuário (Bryan Sousa / Professor orientador).
 
 ### Fase 2: Configuração e Camada de Domínio (Back-End Base)
 * [ ] Configuração do banco H2 e propriedades em `application.properties`.

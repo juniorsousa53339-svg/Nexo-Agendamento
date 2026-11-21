@@ -33,4 +33,7 @@ public class ClinicService {
 
     @Column(precision = 10, scale = 2)
     private BigDecimal price;
+
+    @Column(length = 500)
+    private String imageUrl;
 }

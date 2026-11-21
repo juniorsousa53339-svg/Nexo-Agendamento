@@ -35,7 +35,7 @@ A entidade `Appointment` armazena todas as informações referentes a uma consul
 ---
 
 ## 4. Estratégia do DataLoader
-Para garantir que o Dashboard Administrativo do proprietário (Brian Sousa) nasça preenchido e visualmente rico desde a primeira execução, será implementado um componente `DataLoader` utilizando a interface `CommandLineRunner`:
+Para garantir que o Dashboard Administrativo do proprietário (Bryan Sousa) nasça preenchido e visualmente rico desde a primeira execução, será implementado um componente `DataLoader` utilizando a interface `CommandLineRunner`:
 
 * **Comportamento:** Executado automaticamente na inicialização da aplicação Spring Boot.
 * **Verificação:** Verifica se o repositório já possui registros; caso esteja vazio, insere massa de dados fictícia e realista.

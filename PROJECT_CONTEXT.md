@@ -1,18 +1,18 @@
 # PROJECT_CONTEXT.md — Projeto NEXO
 
 ## 1. Visão Geral do Projeto
-**NEXO** é uma aplicação web desenvolvida como trabalho acadêmico de **Projeto Integrador (PI)**, concebida para operar como o sistema digital de gestão e agendamento de uma clínica de quiropraxia de alto padrão. Localizada ficticiamente em **Alphaville, São Paulo**, a clínica tem como proprietário e único profissional responsável pelos atendimentos **Brian Sousa**.
+**NEXO** é uma aplicação web desenvolvida como trabalho acadêmico de **Projeto Integrador (PI)**, concebida para operar como o sistema digital de gestão e agendamento de uma clínica de quiropraxia de alto padrão. Localizada ficticiamente em **Alphaville, São Paulo**, a clínica tem como proprietário e único profissional responsável pelos atendimentos **Bryan Sousa**.
 
 Apesar do contexto acadêmico, a diretriz principal é entregar uma aplicação com padrão de mercado (SaaS moderno), apresentando arquitetura limpa, código manutenível e uma experiência de usuário (UX/UI) sofisticada, tecnológica e minimalista.
 
 ---
 
 ## 2. Objetivos Principais
-1. **Apresentação Institucional:** Exibir a proposta da clínica, sua filosofia de saúde e bem-estar, e a biografia profissional de Brian Sousa.
+1. **Apresentação Institucional:** Exibir a proposta da clínica, sua filosofia de saúde e bem-estar, e a biografia profissional de Bryan Sousa.
 2. **Catálogo de Serviços:** Listar os tratamentos e avaliações de quiropraxia oferecidos, detalhando escopo, duração e indicações.
 3. **Agendamento Online Intuitivo:** Permitir que pacientes realizem agendamentos de forma simples, com validações em tempo real de disponibilidade.
 4. **Gestão de Conflitos e Regras de Negócio:** Garantir integridade na agenda, impedindo choques de horários, agendamentos fora do expediente ou em datas passadas.
-5. **Dashboard Administrativo:** Disponibilizar uma visão gerencial para o proprietário (Brian Sousa) com indicadores de atendimento, agenda diária, próximos horários e filtros por status/data.
+5. **Dashboard Administrativo:** Disponibilizar uma visão gerencial para o proprietário (Bryan Sousa) com indicadores de atendimento, agenda diária, próximos horários e filtros por status/data.
 6. **Populamento Automático (DataLoader):** Inicializar o banco de dados H2 com dados fictícios realistas para demonstração imediata do dashboard e fluxo de agendamentos.
 
 ---
@@ -37,13 +37,13 @@ Apesar do contexto acadêmico, a diretriz principal é entregar uma aplicação 
 * **Header:** Logotipo NEXO, navegação por âncoras (Início, Sobre, Serviços, Localização), botão de ação "Agendar Consulta", seletor de Tema (Dark/Light mode).
 * **Hero Section:** Título de impacto, proposta de valor sobre movimento e alinhamento corporal, CTA principal.
 * **Sobre a Clínica:** Apresentação do espaço e conceito de saúde corporal em Alphaville.
-* **Sobre o Profissional:** Apresentação de Brian Sousa, seu foco em mobilidade e atendimento personalizado.
+* **Sobre o Profissional:** Apresentação de Bryan Sousa, seu foco em mobilidade e atendimento personalizado.
 * **Serviços:** Cards interativos detalhando serviços (Avaliação Inicial, Consulta de Quiropraxia, Alívio de Dores, Avaliação de Mobilidade, Sessão de Acompanhamento, Orientação Postural).
 * **Localização:** Endereço fictício em Alphaville/SP e horários de atendimento.
 * **Formulário de Agendamento:** Coleta de dados do paciente, seleção de serviço, escolha de data e horário disponível, marcação de primeira consulta/urgência e observações. Validações e feedback de sucesso.
 
 ### Página 2: Dashboard Administrativo (Restrito / Acadêmico)
-* **Header Admin:** Boas-vindas personalizada ("Bem-vindo de volta, Brian").
+* **Header Admin:** Boas-vindas personalizada ("Bem-vindo de volta, Bryan").
 * **Indicadores (KPIs):** Cards com agendamentos de hoje, próximos atendimentos, total de pacientes, concluídos e pendentes.
 * **Agenda do Diária:** Tabela/lista detalhada dos atendimentos do dia (horário, paciente, telefone, serviço, status).
 * **Próximos Agendamentos:** Visão estendida da agenda futura.

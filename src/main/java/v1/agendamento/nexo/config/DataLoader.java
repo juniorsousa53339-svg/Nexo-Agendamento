@@ -33,11 +33,11 @@ public class DataLoader {
             if (serviceRepository.count() == 0) {
                 log.info("Populando serviços de quiropraxia...");
 
-                ClinicService s1 = new ClinicService(null, "Avaliação Inicial & Diagnóstico", "Avaliação biomecânica completa, testes posturais e anamnese detalhada.", 60, new BigDecimal("250.00"));
-                ClinicService s2 = new ClinicService(null, "Consulta de Quiropraxia (Manutenção)", "Sessão de ajustes articulares, liberação miofascial e restauração da mobilidade.", 45, new BigDecimal("200.00"));
-                ClinicService s3 = new ClinicService(null, "Alívio de Dores Agudas", "Atendimento focado no alívio imediato de cervicalgias, lombalgias e travamentos.", 50, new BigDecimal("220.00"));
-                ClinicService s4 = new ClinicService(null, "Avaliação de Mobilidade & Postura", "Análise avançada de desalinhamentos posturais e padrões de movimento.", 60, new BigDecimal("250.00"));
-                ClinicService s5 = new ClinicService(null, "Orientação Postural & Ergonomia", "Sessão educativa e prática para correção de postura no trabalho e dia a dia.", 45, new BigDecimal("180.00"));
+                ClinicService s1 = new ClinicService(null, "Avaliação Inicial & Diagnóstico", "Avaliação biomecânica completa, testes posturais e anamnese detalhada.", 60, new BigDecimal("250.00"), "https://images.pexels.com/photos/5793654/pexels-photo-5793654.jpeg");
+                ClinicService s2 = new ClinicService(null, "Consulta de Quiropraxia (Manutenção)", "Sessão de ajustes articulares, liberação miofascial e restauração da mobilidade.", 45, new BigDecimal("200.00"), "https://images.pexels.com/photos/5793949/pexels-photo-5793949.jpeg");
+                ClinicService s3 = new ClinicService(null, "Alívio de Dores Agudas", "Atendimento focado no alívio imediato de cervicalgias, lombalgias e travamentos.", 50, new BigDecimal("220.00"), "https://images.pexels.com/photos/5793794/pexels-photo-5793794.jpeg");
+                ClinicService s4 = new ClinicService(null, "Avaliação de Mobilidade & Postura", "Análise avançada de desalinhamentos posturais e padrões de movimento.", 60, new BigDecimal("250.00"), "https://images.pexels.com/photos/5793895/pexels-photo-5793895.jpeg");
+                ClinicService s5 = new ClinicService(null, "Orientação Postural & Ergonomia", "Sessão educativa e prática para correção de postura no trabalho e dia a dia.", 45, new BigDecimal("180.00"), "https://images.pexels.com/photos/5793683/pexels-photo-5793683.jpeg");
 
                 serviceRepository.saveAll(List.of(s1, s2, s3, s4, s5));
 

@@ -7,7 +7,7 @@ Este documento define o conjunto de regras de negócio, restrições operacionai
 
 ## 2. Regras de Agendamento
 1. **Unicidade de Horário (Anti-Conflito):**
-   * Não é permitido realizar dois agendamentos para o mesmo horário/data, visto que Brian Sousa é o único profissional atendendo.
+   * Não é permitido realizar dois agendamentos para o mesmo horário/data, visto que Bryan Sousa é o único profissional atendendo.
 2. **Expediente e Dias de Atendimento:**
    * **Dias úteis:** Segunda-feira a Sexta-feira. Sábados e domingos a clínica não realiza atendimentos regulares (**DECISÃO PENDENTE** sobre plantões eventuais).
    * **Horário de funcionamento:** Das 08:00 às 18:00.
@@ -32,7 +32,7 @@ Este documento define o conjunto de regras de negócio, restrições operacionai
 ## 4. Status do Agendamento (`AppointmentStatus`)
 O ciclo de vida de um agendamento é representado pelos seguintes status:
 1. **AGENDADO:** Criado recentemente pelo paciente através da página pública, aguardando confirmação ou atendimento.
-2. **CONFIRMADO:** Validado pelo profissional (Brian Sousa) no dashboard.
+2. **CONFIRMADO:** Validado pelo profissional (Bryan Sousa) no dashboard.
 3. **CONCLUIDO:** Atendimento realizado com sucesso.
 4. **CANCELADO:** Agendamento cancelado pelo paciente ou pela clínica.
 

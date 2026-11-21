@@ -25,6 +25,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -5px rgb(13 148 136 / 0.12), 0 8px 10px -6px rgb(13 148 136 / 0.08);
+        }
     </style>
     <script>
         // Theme switcher initializer
@@ -43,13 +57,14 @@
     <!-- Header / Navbar Admin -->
     <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 to-emerald-500 flex items-center justify-center font-bold text-white text-xl tracking-wider shadow-lg shadow-teal-500/20">
-                    NX
+            <div class="flex items-center space-x-3.5">
+                <div class="relative flex-shrink-0">
+                    <img src="/images/doctor.png" alt="Dr. Bryan Sousa" class="w-11 h-11 rounded-full object-cover border-2 border-teal-500 shadow-md">
+                    <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-slate-950 rounded-full animate-pulse"></span>
                 </div>
                 <div>
                     <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">NEXO Admin</span>
-                    <span class="block text-xs text-teal-600 dark:text-teal-400 font-medium">Dr. Brian Sousa</span>
+                    <span class="block text-xs text-teal-600 dark:text-teal-400 font-semibold">Dr. Bryan Sousa</span>
                 </div>
             </div>
             <div class="flex items-center space-x-4">
@@ -58,7 +73,8 @@
                     <svg id="sunIcon" class="w-5 h-5 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     <svg id="moonIcon" class="w-5 h-5 block dark:hidden text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
-                <a href="/" class="bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 px-4 py-2.5 rounded-xl text-sm font-medium transition shadow-sm">
+                <a href="/" class="bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 px-4 py-2.5 rounded-xl text-sm font-medium transition shadow-sm flex items-center gap-2">
+                    <svg class="w-4 h-4 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     Ver Site Público
                 </a>
             </div>
@@ -69,16 +85,26 @@
     <main class="max-w-7xl mx-auto px-6 py-10 flex-1 w-full">
 
         <!-- Welcome Banner -->
-        <div class="mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl shadow-sm">
-            <div>
-                <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Dashboard Administrativo</h1>
-                <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Bem-vindo de volta, Brian. Aqui está o resumo da sua agenda e atendimentos.</p>
+        <div class="mb-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl shadow-sm relative overflow-hidden hover-lift">
+            <div class="absolute -right-16 -top-16 w-64 h-64 bg-teal-500/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="flex items-center gap-6">
+                <div class="relative flex-shrink-0 group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-teal-600 to-emerald-500 rounded-2xl blur opacity-40 group-hover:opacity-75 transition"></div>
+                    <img src="/images/doctor.png" alt="Dr. Bryan Sousa" class="relative w-20 h-20 rounded-2xl object-cover border-2 border-teal-500 shadow-lg">
+                </div>
+                <div class="space-y-1">
+                    <span class="text-xs font-bold uppercase tracking-widest text-teal-600 dark:text-teal-400">Painel de Gestão Clínica</span>
+                    <h1 id="typingWelcome" class="text-3xl font-extrabold text-slate-900 dark:text-white min-h-[40px]">Bem-vindo de volta, Dr. Bryan Sousa.</h1>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Aqui está o resumo da sua agenda e atendimentos para a data selecionada.</p>
+                </div>
             </div>
             <div>
                 <form method="get" action="/admin" class="flex items-center gap-3">
-                    <input type="date" name="date" th:value="${selectedDate}"
-                           class="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-teal-500">
-                    <button type="submit" class="bg-teal-600 hover:bg-teal-500 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition shadow-md shadow-teal-600/20">
+                    <div class="relative">
+                        <input type="date" name="date" th:value="${selectedDate}"
+                               class="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-teal-500 transition">
+                    </div>
+                    <button type="submit" class="bg-teal-600 hover:bg-teal-500 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition shadow-md shadow-teal-600/20 cursor-pointer">
                         Filtrar Data
                     </button>
                 </form>
@@ -86,31 +112,33 @@
         </div>
 
         <!-- Alert messages -->
-        <div th:if="${successMessage}" class="mb-6 p-4 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-700 dark:text-teal-300 text-sm shadow-sm">
+        <div th:if="${successMessage}" class="mb-6 p-4 rounded-2xl bg-teal-500/10 border border-teal-500/30 text-teal-700 dark:text-teal-300 text-sm shadow-sm flex items-center gap-3">
+            <svg class="w-5 h-5 text-teal-600 dark:text-teal-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
             <span th:text="${successMessage}">Sucesso</span>
         </div>
-        <div th:if="${errorMessage}" class="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-700 dark:text-rose-300 text-sm shadow-sm">
+        <div th:if="${errorMessage}" class="mb-6 p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-700 dark:text-rose-300 text-sm shadow-sm flex items-center gap-3">
+            <svg class="w-5 h-5 text-rose-600 dark:text-rose-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
             <span th:text="${errorMessage}">Erro</span>
         </div>
 
         <!-- KPIs Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <div class="p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-teal-500/40 transition">
                 <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Agendamentos Hoje</span>
                 <div class="text-3xl font-extrabold text-slate-900 dark:text-white mt-2" th:text="${totalToday}">0</div>
                 <span class="text-xs text-teal-600 dark:text-teal-400 mt-2 block font-medium">Data selecionada</span>
             </div>
-            <div class="p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-teal-500/40 transition">
                 <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Total de Pacientes</span>
                 <div class="text-3xl font-extrabold text-slate-900 dark:text-white mt-2" th:text="${totalPatients}">0</div>
                 <span class="text-xs text-teal-600 dark:text-teal-400 mt-2 block font-medium">Cadastrados na base</span>
             </div>
-            <div class="p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-teal-500/40 transition">
                 <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Atendimentos Concluídos</span>
                 <div class="text-3xl font-extrabold text-slate-900 dark:text-white mt-2" th:text="${totalCompleted}">0</div>
                 <span class="text-xs text-teal-600 dark:text-teal-400 mt-2 block font-medium">Histórico total</span>
             </div>
-            <div class="p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-teal-500/40 transition">
                 <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Pendentes / Agendados</span>
                 <div class="text-3xl font-extrabold text-slate-900 dark:text-white mt-2" th:text="${totalPending}">0</div>
                 <span class="text-xs text-teal-600 dark:text-teal-400 mt-2 block font-medium">Aguardando atendimento</span>
@@ -119,7 +147,7 @@
 
         <!-- Agenda do Dia -->
         <div class="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 mb-12 shadow-sm">
-            <div class="flex items-center justify-between mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                 <div>
                     <h2 class="text-xl font-bold text-slate-900 dark:text-white">Agenda do Dia</h2>
                     <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" th:text="${'Exibindo atendimentos para: ' + selectedDate}">Data</p>
@@ -140,7 +168,7 @@
                     </thead>
                     <tbody class="divide-y divide-slate-200 dark:divide-slate-800/60">
                         <tr th:if="${#lists.isEmpty(dailyAppointments)}">
-                            <td colspan="6" class="p-8 text-center text-slate-400">Nenhum agendamento encontrado para esta data.</td>
+                            <td colspan="6" class="p-12 text-center text-slate-400">Nenhum agendamento encontrado para esta data.</td>
                         </tr>
                         <tr th:each="app : ${dailyAppointments}" class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
                             <td class="p-4 font-bold text-slate-900 dark:text-white" th:text="${#temporals.format(app.appointmentTime, 'HH:mm')}">09:00</td>
@@ -174,6 +202,114 @@
             </div>
         </div>
 
+        <!-- Gerenciamento de Serviços -->
+        <div class="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 mb-12 shadow-sm">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white">Gerenciamento de Serviços</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Adicione, edite valores, nomes e duração ou remova serviços da clínica.</p>
+                </div>
+                <button onclick="document.getElementById('newServiceModal').classList.remove('hidden')" class="bg-teal-600 hover:bg-teal-500 text-white font-semibold px-4 py-2.5 rounded-xl text-xs transition shadow-md shadow-teal-600/20 flex items-center gap-2 cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    Novo Serviço
+                </button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div th:each="srv : ${services}" class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 flex flex-col justify-between shadow-sm">
+                    <form th:action="@{/admin/services/{id}(id=${srv.id})}" method="post" class="space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-teal-500/10 text-teal-700 dark:text-teal-400">ID: [[${srv.id}]]</span>
+                                <div class="flex items-center gap-1">
+                                    <input type="number" name="durationMinutes" th:value="${srv.durationMinutes}" required min="10" max="300"
+                                           class="w-16 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-2 py-1 text-xs text-slate-900 dark:text-white text-center focus:outline-none focus:border-teal-500" title="Duração em minutos">
+                                    <span class="text-xs text-slate-500">min</span>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-1">Nome do Serviço</label>
+                                    <input type="text" name="name" th:value="${srv.name}" required
+                                           class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-teal-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-1">Valor (R$)</label>
+                                    <input type="number" step="0.01" name="price" th:value="${srv.price}" required
+                                           class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl px-3 py-2 text-sm font-bold text-teal-600 dark:text-teal-400 focus:outline-none focus:border-teal-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-1">Descrição</label>
+                                    <textarea name="description" rows="2"
+                                              class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:border-teal-500" th:text="${srv.description}"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-semibold uppercase tracking-wider text-slate-500 mb-1">URL da Imagem</label>
+                                    <input type="url" name="imageUrl" th:value="${srv.imageUrl}" placeholder="https://exemplo.com/imagem.jpg"
+                                           class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-teal-500">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+                            <button type="submit" class="flex-1 bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 rounded-xl text-xs transition cursor-pointer shadow-sm">
+                                Atualizar
+                            </button>
+                            <button type="submit" formaction="#" th:formaction="@{/admin/services/{id}/delete(id=${srv.id})}" onclick="return confirm('Tem certeza que deseja excluir este serviço?');" class="bg-rose-500/10 hover:bg-rose-500 text-rose-600 hover:text-white border border-rose-500/30 px-3 py-2 rounded-xl text-xs font-semibold transition cursor-pointer" title="Excluir serviço">
+                                Excluir
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Novo Serviço -->
+        <div id="newServiceModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-lg w-full p-8 shadow-2xl relative">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Adicionar Novo Serviço</h3>
+                    <button onclick="document.getElementById('newServiceModal').classList.add('hidden')" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 font-bold text-xl">&times;</button>
+                </div>
+                <form th:action="@{/admin/services}" th:object="${newService}" method="post" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">Nome do Serviço *</label>
+                        <input type="text" th:field="*{name}" required placeholder="Ex: Quiropraxia Avançada"
+                               class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-teal-500">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">Duração (Minutos) *</label>
+                            <input type="number" th:field="*{durationMinutes}" required value="60" min="10" max="300"
+                                   class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-teal-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">Preço (R$) *</label>
+                            <input type="number" step="0.01" th:field="*{price}" required placeholder="Ex: 250.00"
+                                   class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-teal-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">Descrição</label>
+                        <textarea th:field="*{description}" rows="3" placeholder="Descrição do procedimento..."
+                                  class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">URL da Imagem</label>
+                        <input type="url" th:field="*{imageUrl}" placeholder="https://exemplo.com/imagem.jpg"
+                               class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-teal-500">
+                    </div>
+                    <div class="flex justify-end gap-3 pt-4">
+                        <button type="button" onclick="document.getElementById('newServiceModal').classList.add('hidden')" class="bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold px-5 py-2.5 rounded-xl text-sm transition">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="bg-teal-600 hover:bg-teal-500 text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition shadow-md shadow-teal-600/20">
+                            Salvar Serviço
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- Próximos Agendamentos -->
         <div class="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 shadow-sm">
             <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Próximos Agendamentos</h2>
@@ -189,7 +325,7 @@
                     </thead>
                     <tbody class="divide-y divide-slate-200 dark:divide-slate-800/60">
                         <tr th:if="${#lists.isEmpty(upcomingAppointments)}">
-                            <td colspan="4" class="p-8 text-center text-slate-400">Nenhum agendamento futuro encontrado.</td>
+                            <td colspan="4" class="p-12 text-center text-slate-400">Nenhum agendamento futuro encontrado.</td>
                         </tr>
                         <tr th:each="app : ${upcomingAppointments}" class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
                             <td class="p-4 font-bold text-slate-900 dark:text-white" th:text="${#temporals.format(app.appointmentDate, 'dd/MM/yyyy') + ' às ' + #temporals.format(app.appointmentTime, 'HH:mm')}">Data</td>
@@ -208,10 +344,10 @@
 
     <!-- Footer -->
     <footer class="py-12 border-t border-slate-200 dark:border-slate-900 text-center text-sm text-slate-500 mt-20">
-        <p>&copy; 2026 NEXO Quiropraxia. Painel Administrativo Exclusivo.</p>
+        <p>&copy; 2026 NEXO Quiropraxia. Painel Administrativo Exclusivo de Dr. Bryan Sousa.</p>
     </footer>
 
-    <!-- Theme Toggle Script -->
+    <!-- Theme Toggle & Typing Effect Script -->
     <script>
         function toggleTheme() {
             if (document.documentElement.classList.contains('dark')) {
@@ -222,6 +358,23 @@
                 localStorage.setItem('nexo_theme', 'dark');
             }
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const text = "Bem-vindo de volta, Dr. Bryan Sousa.";
+            const target = document.getElementById("typingWelcome");
+            if (target) {
+                let i = 0;
+                target.textContent = "";
+                function typeWriter() {
+                    if (i < text.length) {
+                        target.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 60);
+                    }
+                }
+                typeWriter();
+            }
+        });
     </script>
 
 </body>

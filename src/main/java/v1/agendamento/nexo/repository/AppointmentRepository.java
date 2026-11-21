@@ -23,6 +23,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     @Query("SELECT a FROM Appointment a WHERE a.appointmentDate = :date AND a.appointmentTime = :time AND a.status <> 'CANCELADO'")
     List<Appointment> findActiveAppointmentsAtTime(@Param("date") LocalDate date, @Param("time") LocalTime time);
 
+    boolean existsByServiceId(Long serviceId);
+
     long countByAppointmentDate(LocalDate date);
 
     long countByStatus(AppointmentStatus status);

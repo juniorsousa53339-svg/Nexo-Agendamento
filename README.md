@@ -8,7 +8,7 @@
 
 ## 📋 Sobre o Projeto
 
-O **NEXO** é uma aplicação web desenvolvida para operar como o sistema digital de gestão e agendamento de uma clínica de quiropraxia de alto padrão localizada em **Alphaville, São Paulo**, tendo como profissional responsável **Brian Sousa**.
+O **NEXO** é uma aplicação web desenvolvida para operar como o sistema digital de gestão e agendamento de uma clínica de quiropraxia de alto padrão localizada em **Alphaville, São Paulo**, tendo como profissional responsável **Bryan Sousa**.
 
 Apesar de seu contexto acadêmico (Projeto Integrador), o sistema foi concebido com padrões de mercado (SaaS moderno), oferecendo arquitetura limpa, código manutenível, validações robustas de regras de negócio e uma experiência de usuário (UX/UI) sofisticada, tecnológica e minimalista.
 
@@ -69,7 +69,7 @@ Para evitar alucinações e desalinhamentos dos agentes de IA, foi estabelecida 
 ## 🚀 Funcionalidades Principais
 
 ### 🌐 1. Portal Público (Home & Agendamento)
-* **Apresentação Institucional:** Seções dedicadas à filosofia de saúde e bem-estar da clínica e biografia de Brian Sousa.
+* **Apresentação Institucional:** Seções dedicadas à filosofia de saúde e bem-estar da clínica e biografia de Bryan Sousa.
 * **Catálogo de Serviços:** Listagem de tratamentos de quiropraxia (Avaliação Inicial, Ajuste Vertebral, Alívio de Dores, Mobilidade, etc.) com detalhes de duração e objetivos.
 * **Agendamento Online Inteligente:** Formulário interativo para o paciente selecionar serviço, data e horário disponível, com validações em tempo real.
 * **Alternância de Tema:** Suporte a modo Claro (Light) e Escuro (Dark).

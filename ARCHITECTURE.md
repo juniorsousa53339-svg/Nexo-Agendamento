@@ -30,7 +30,7 @@ v1.agendamento.nexo/
 * **Responsabilidade:** Receber requisições HTTP do cliente (navegador), validar entradas via Bean Validation, invocar os serviços apropriados e retornar templates Thymeleaf (`ModelAndView` / `String`) ou dados JSON (se houver endpoints AJAX/API para consulta de horários).
 * **Componentes principais:**
   * `HomeController`: Gerencia a página principal (Home, Sobre, Serviços, Localização) e submissão do formulário de agendamento.
-  * `AdminController`: Gerencia o dashboard do proprietário (Brian Sousa), listagem de agendamentos, indicadores e alteração de status.
+  * `AdminController`: Gerencia o dashboard do proprietário (Bryan Sousa), listagem de agendamentos, indicadores e alteração de status.
   * `AvailabilityController` (Opcional/API): Endpoint REST auxiliar para consulta dinâmica de horários livres por data.
 
 ### B) Service (`v1.agendamento.nexo.service`)
