@@ -4,6 +4,12 @@
   <b>Sistema web moderno de agendamento e gerenciamento desenvolvido como Projeto Integrador acadêmico utilizando uma abordagem avançada de AI-Assisted Software Development.</b>
 </p>
 
+<p align="center">
+  <a href="https://nexo-agendamento-nc8h.onrender.com/" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_Demo-Online-brightgreen?style=for-the-badge&logo=render" alt="Demo Online">
+  </a>
+</p>
+
 ---
 
 ## 📋 Sobre o Projeto
