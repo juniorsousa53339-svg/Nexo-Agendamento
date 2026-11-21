@@ -1,6 +1,6 @@
 # Guia de Instalação e Execução Local — NEXO Quiropraxia
 
-Este documento fornece instruções detalhadas para configurar, instalar e executar o projeto **NEXO Quiropraxia** em uma máquina limpa.
+Este documento fornece instruções detalhadas para configurar, instalar e executar o projeto **NEXO Quiropraxia** em uma máquina limpa, bem como empacotá-lo via Docker e publicá-lo em nuvem (Render).
 
 ---
 
@@ -45,8 +45,8 @@ git --version
 ## 5. Clonagem do Repositório
 Abra o terminal na pasta onde deseja salvar o projeto e execute o comando de clonagem:
 ```bash
-git clone <url-do-repositorio>
-cd nexo
+git clone https://github.com/juniorsousa53339-svg/Nexo-Agendamento.git
+cd Nexo-Agendamento
 ```
 *(Nota: Se o código já estiver na sua máquina, navegue diretamente para a pasta raiz do projeto).*
 
@@ -59,17 +59,15 @@ O projeto inclui o **Maven Wrapper** (`mvnw` para Linux/macOS e `mvnw.cmd` para 
 
 ## 7. Como Executar o Backend (Spring Boot)
 
-No terminal, certifique-se de estar na pasta raiz do projeto onde se encontra o arquivo `pom.xml` (ou navegue para a subpasta `nexo` caso o repositório contenha essa estrutura):
+No terminal, certifique-se de estar na pasta raiz do projeto onde se encontra o arquivo `pom.xml`:
 
 ### No Windows (PowerShell / Prompt):
 ```cmd
-cd nexo
 .\mvnw.cmd spring-boot:run
 ```
 
 ### No Linux / macOS (Bash / Zsh):
 ```bash
-cd nexo
 ./mvnw spring-boot:run
 ```
 
@@ -110,7 +108,39 @@ Para executar a suíte de testes do projeto e verificar a integridade do código
 
 ---
 
-## 10. Solução de Erros Mais Comuns
+## 10. Containerização com Docker
+O projeto possui um **`Dockerfile`** configurado na raiz para empacotar a aplicação Spring Boot em um container Linux leve (Eclipse Temurin JDK 17 / JRE 17).
+
+### Construir a Imagem Docker Localmente:
+```bash
+docker build -t nexo-agendamento .
+```
+
+### Executar o Container Localmente:
+```bash
+docker run -p 8080:8080 nexo-agendamento
+```
+A aplicação estará acessível em `http://localhost:8080`.
+
+---
+
+## 11. Hospedagem e Deploy na Render
+Para disponibilizar o sistema online para clientes e demonstrações via Web:
+
+1. **Repositório GitHub**: Certifique-se de que o projeto está enviado para o GitHub (`https://github.com/juniorsousa53339-svg/Nexo-Agendamento.git`).
+2. **Criar Serviço na Render**:
+   - Acesse [dashboard.render.com](https://dashboard.render.com/).
+   - Clique em **New +** e selecione **Web Service**.
+   - Conecte o repositório `Nexo-Agendamento`.
+3. **Configurações do Deploy**:
+   - **Runtime**: `Docker` (o Render detectará automaticamente o `Dockerfile`).
+   - **Instance Type**: `Free` (Gratuito).
+4. **Finalizar**:
+   - Clique em **Create Web Service**. A Render fará o build automatizado e fornecerá uma URL pública (`.onrender.com`) para acesso remoto.
+
+---
+
+## 12. Solução de Erros Mais Comuns
 
 1. **Porta 8080 em uso (`Address already in use`)**:
    - Outro aplicativo ou instância anterior do Spring Boot está rodando na porta 8080. Encerre o processo correspondente ou altere a porta em `src/main/resources/application.properties` adicionando:
@@ -122,4 +152,4 @@ Para executar a suíte de testes do projeto e verificar a integridade do código
    - O projeto foi compilado para Java 17, mas você está executando com uma versão inferior (ex: Java 11 ou 8). Verifique `java -version` e configure o `JAVA_HOME` corretamente para o JDK 17.
 
 3. **Banco de Dados Vazio ou Erro de Tabela Não Encontrada**:
-   - O Spring Boot utiliza `spring.jpa.hibernate.ddl-auto=create-drop`, recriando o esquema a cada inicialização e populando via `DataLoader`. Caso ocorra falha, reinicie a aplicação com o comando `spring-boot:run`.
+   - O Spring Boot utiliza `spring.jpa.hibernate.ddl-auto=create-drop`, recriando o esquema a cada inicialização e populando via `DataLoader`. Caso ocorra falha, reinicie a aplicação com o comando `spring-boot:run` ou reconstrua o container Docker.
